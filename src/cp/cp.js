@@ -6,9 +6,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const spawnChildProcess = async (args) => {
-    const filePath = path.join(__dirname, 'files', 'script.js');
+  const filePath = path.join(__dirname, 'files', 'script.js');
 
-    fork(filePath, args);
+  fork(filePath, args);
 };
 
 // Put your arguments in function call to test this functionality
