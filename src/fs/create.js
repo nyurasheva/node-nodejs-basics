@@ -1,9 +1,13 @@
 import { writeFile } from 'fs/promises';
 import path from 'path';
-import { currentModulePath, errorMessage } from './constants.js';
+import { fileURLToPath } from 'url';
+import { errorMessage } from './constants.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const create = async () => {
-  const filePath = path.join(currentModulePath, 'files', 'fresh.txt');
+  const filePath = path.join(__dirname, '/files/fresh.txt');
   const fileContent = 'I am fresh and young';
 
   try {

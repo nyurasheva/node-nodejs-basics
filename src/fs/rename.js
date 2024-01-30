@@ -1,10 +1,14 @@
 import { promises as fsPromises } from 'fs';
 import path from 'path';
-import { currentModulePath, errorMessage } from './constants.js';
+import { fileURLToPath } from 'url';
+import { errorMessage } from './constants.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const rename = async () => {
-  const sourceFilePath = path.join(currentModulePath, 'files', 'wrongFilename.txt');
-  const destinationFilePath = path.join(currentModulePath, 'files', 'properFilename.md');
+  const sourceFilePath = path.join(__dirname, '/files/wrongFilename.txt');
+  const destinationFilePath = path.join(__dirname, '/files/properFilename.md');
 
   try {
     await fsPromises.rename(sourceFilePath, destinationFilePath);

@@ -1,10 +1,14 @@
 import { promises as fsPromises, constants } from 'fs';
 import path from 'path';
-import { currentModulePath, errorMessage } from './constants.js';
+import { fileURLToPath } from 'url';
+import { errorMessage } from './constants.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const copy = async () => {
-  const sourcePath = path.join(currentModulePath, 'files');
-  const destinationPath = path.join(currentModulePath, 'files_copy');
+  const sourcePath = path.join(__dirname, 'files');
+  const destinationPath = path.join(__dirname, 'files_copy');
 
   try {
     await fsPromises.access(sourcePath, constants.R_OK);
