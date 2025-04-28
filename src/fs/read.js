@@ -11,7 +11,7 @@ const read = async () => {
 
   try {
     const fileContent = await fs.readFile(filePath, 'utf-8');
-    console.log('Content of fileToRead.txt:', fileContent);
+    console.log(`Content of fileToRead.txt:\n${fileContent}`);
   } catch {
     console.error(`Error: ${errorMessage}`);
   }
