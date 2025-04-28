@@ -13,6 +13,10 @@ const read = async () => {
     process.stdout.write(chunk);
   });
 
+  readStream.on('end', () => {
+    console.log('\n');
+  });
+
   readStream.on('error', (err) => {
     console.error(`Error reading file: ${err.message}`);
   });
