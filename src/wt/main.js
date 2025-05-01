@@ -12,7 +12,7 @@ const results = [];
 const sendToWorker = (worker, index) => {
   return new Promise((resolve, reject) => {
     worker.on('message', (result) => {
-      results[index] = { status: 'resolved', data: result };
+      results[index] = result; 
       resolve();
     });
 
